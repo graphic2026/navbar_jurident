@@ -22,6 +22,7 @@ class _NavbarState extends State<Navbar> {
     const News(),
     const Calendar(),
     const Account(),
+    const Addition(),
 
   ];
 
@@ -44,7 +45,13 @@ class _NavbarState extends State<Navbar> {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add_rounded,color: Colors.white,size: 35,),
         //Try adding the 'const' keyword to the constructor invocation.
-        onPressed: (){},
+        onPressed: (){
+          setState(() {
+            currentScreen=const Addition();
+            currentTab=4;
+          });
+          
+        },
         backgroundColor: Color(0xFFC99F4A),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -158,4 +165,28 @@ class _NavbarState extends State<Navbar> {
       ),
     );
   }
+  
 }
+class Addition extends StatefulWidget {
+  const Addition({Key? key}) : super(key: key);
+
+  @override
+  State<Addition> createState() => _AdditionState();
+}
+
+class _AdditionState extends State<Addition> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      drawer: const Hamburger(),
+      appBar: AppBar(
+        title: Center( child: Text('Addition')),
+      ),
+      body: const Center(
+        child: Text('Addition Screen', style: TextStyle(fontSize: 40),),
+      ),
+
+    );
+  }
+}
+
